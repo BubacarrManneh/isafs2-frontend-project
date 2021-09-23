@@ -7,7 +7,7 @@ function useCountry(countryName) {
   if(error){
     console.log("Error; countries data could not be fetched", error)
   }
-
+                                                            
   useEffect(() => {
     const fetchData = async () => {
       try {

@@ -1,17 +1,24 @@
 
 import React from 'react'
+import useCountry from './custom-hooks/useCountry'
+// import {useState, useEffect} from 'react'
 
-const Country = ({flag, name, capital,region, languages}) => {
+const Country = () => {
+    const [oneCountry, error] = useCountry('Netherlands');
+    if(error){
+        console.log("Error; countries data could not be fetched", error)
+      }
     return ( 
         <div>
-            <h1>Country Page</h1>
-            <img src={flag} alt={flag} />
-            <h2>Name: {name}</h2>
-            <p>Capital: {capital}</p>
-            <p>Region: {region}</p>
-            <p>Language: {languages}</p>
+            {oneCountry.filter((country) => {
+               return  country.name === 'oneCountry'
+                }).map(country => {
+                    return <Country key={country.name} flag={country.flag} capital={country.capital} region={country.region} language={country.language}  />
+                })
+             }
         </div>
-     );
+    )  
+       
 }
  
 export default Country;

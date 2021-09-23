@@ -6,8 +6,8 @@ import Table from '@mui/material/Table';
 import {makeStyles} from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
-import CountryTableRow from '.components/TableRow';
-import CountryTableHead from '.components/TableHead';
+import CountryTableRow from './components/TableRow';
+import CountryTableHead from './components/TableHead';
 
 
 const useStyles = makeStyles({

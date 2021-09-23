@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 
 
-const CountryTableHead = () => {
+const CountryTableHead = ({flag, name,capital, region,languages}) => {
     return (
         <div>
             <TableHead>
