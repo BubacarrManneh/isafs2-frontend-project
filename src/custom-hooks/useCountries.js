@@ -1,30 +1,24 @@
-// This hook is used to fetch all 
-import {useState, useEffect} from 'react'
-const useCountries = (url) => {
-    const [countries, setCountries] = useState([]);
-    const [error, setError] = useState('');
-    if(error){
-        console.log("Error; countries data could not be fetched", error)
-      }
+import { useState, useEffect } from "react";
 
-    useEffect(() => {
-        
-        const fetchData = async () => {
-            try{
-                const result = await fetch(url);
-                const data = await result.json();
-                setCountries(data);
-            }catch(error){
-                console.log(error)
-                setError(error);
-            }
-        
-        }
-        fetchData();
-    }, [url])
-    return ( 
-        [error, countries]
-     );
-}
- 
+const useCountries = url => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetch(url);
+        const finalResult = await result.json();
+        setData(finalResult);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return [data, error];
+};
+
 export default useCountries;

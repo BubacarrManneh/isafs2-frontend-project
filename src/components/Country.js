@@ -1,13 +1,13 @@
 
 import React from 'react'
-import useCountry from './custom-hooks/useCountry'
+import useCountry from '../custom-hooks/useCountry'
 // import {useState, useEffect} from 'react'
 
-const Country = () => {
-    const [oneCountry, error] = useCountry('Netherlands');
+const Country = (countryName) => {
+    const[oneCountry, error] = useCountry('http://restcountries.com/rest/v3/name/{countryName}');
     if(error){
-        console.log("Error; countries data could not be fetched", error)
-      }
+    console.log("Error; countries data could not be fetched", error)
+  }
     return ( 
         <div>
             {oneCountry.filter((country) => {

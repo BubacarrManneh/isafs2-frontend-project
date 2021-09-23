@@ -1,16 +1,13 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import Home from './components/Home';
-import CountryTable from './components/Table'
+import './App.css'
+import "./App.css";
+import TableCountries from "./Table/CountriesTable";
 
 function App() {
-
-  return <div className='App'>
-     {/* <div className='App'>{<Home />}</div> */}
-      {/* <div className='App'>{<Country/>}</div> */}
-      <div className='App'>{<CountryTable/>}</div>
-  </div>
- 
+  return (
+    <div className='App'>
+      <TableCountries />
+    </div>
+  );
 }
 
 export default App;

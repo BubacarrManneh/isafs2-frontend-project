@@ -1,19 +1,16 @@
 import { useState, useEffect } from "react";
 
-function useCountry(countryName) {
-  const url = `https://restcountries.com/rest/v3/name/${countryName}`;
-  const [country, setCountry] = useState([]);
+function UseCountry(countryName) {
+  const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
+  const [data, setData] = useState([]);
   const [error, setError] = useState("");
-  if(error){
-    console.log("Error; countries data could not be fetched", error)
-  }
-                                                            
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await fetch(url);
-        const country = await result.json();
-        setCountry(country);
+        const data = await result.json();
+        setData(data);
       } catch (error) {
         setError(error);
       }
@@ -22,9 +19,7 @@ function useCountry(countryName) {
     fetchData();
   }, [url]);
 
-  return (
-      [error, country]
-    )
+  return [data, error];
 }
 
-export default useCountry;
+export default UseCountry;
