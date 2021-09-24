@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function UseCountry(countryName) {
-  const url = `https://restcountries.eu/rest/v2/name/${countryName}`;
+  const url = `https://restcountries-v2.herokuapp.com/country/${countryName}`;
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 

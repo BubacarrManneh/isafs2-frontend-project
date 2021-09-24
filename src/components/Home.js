@@ -3,7 +3,7 @@ import useCountries from './custom-hooks/useCountries'
 // import {useState, useEffect} from 'react'
 
 const Home = () => {
-    const[allCountries, error] = useCountries("http://restcountries.eu/rest/v2/all");
+    const[allCountries, error] = useCountries("https://restcountries-v2.herokuapp.com/all");
     if(error){
     console.log("Error; countries data could not be fetched", error)
   }

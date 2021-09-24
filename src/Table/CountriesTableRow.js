@@ -1,7 +1,7 @@
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-function TableRowCountry({
+function CountriesTableRow({
   country: { flag, name, population, region, languages },
 }) {
   return (
@@ -17,4 +17,4 @@ function TableRowCountry({
   );
 }
 
-export default TableRowCountry;
+export default CountriesTableRow;

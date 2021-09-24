@@ -5,8 +5,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import Paper from "@material-ui/core/Paper";
 
 import useCountries from "../custom-hooks/useCountries";
-import TableRowCountry from "./CountryTableRow";
-import TableHeadCountry from "./CountryTableHead";
+import CountryTableRow from "./CountriesTableRow";
+import CountryTableHead from "./CountriesTableHead";
 
 const useStyles = makeStyles({
   table: {
@@ -14,11 +14,12 @@ const useStyles = makeStyles({
   },
 });
 
-function TableCountries() {
+
+function CountriesTable() {
   const classes = useStyles();
 
   const [countriesData, error] = useCountries(
-    "https://restcountries.eu/rest/v2/all"
+    "https://restcountries-v2.herokuapp.com/all"
   );
 
   if (error) {
@@ -28,10 +29,10 @@ function TableCountries() {
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label='simple table'>
-        <TableHeadCountry />
+        <CountryTableHead />
         <TableBody>
           {countriesData.map(country => (
-            <TableRowCountry key={country.name} country={country} />
+            <CountryTableRow key={country.name} country={country} />
           ))}
         </TableBody>
       </Table>
@@ -39,4 +40,4 @@ function TableCountries() {
   );
 }
 
-export default TableCountries;
+export default CountriesTable;

@@ -2,7 +2,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-function TableHeadCountry() {
+function CountriesTableHead() {
   return (
     <TableHead>
       <TableRow>
@@ -16,4 +16,4 @@ function TableHeadCountry() {
   );
 }
 
-export default TableHeadCountry;
+export default CountriesTableHead;
