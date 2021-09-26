@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from 'react'
 
-const useCountries = url => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
-
+const useCountries = (url) => {
+  const [countries, setCountries] = useState([]);
+  const [error, setError] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await fetch(url);
-        const finalResult = await result.json();
-        setData(finalResult);
+        const data = await result.json();
+        setCountries(data);
       } catch (error) {
         setError(error);
       }
@@ -17,8 +16,10 @@ const useCountries = url => {
 
     fetchData();
   }, [url]);
+  
+  return (
+    {error, countries}
+  )
+}
 
-  return [data, error];
-};
-
-export default useCountries;
+export default useCountries
