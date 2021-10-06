@@ -1,10 +1,10 @@
-import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import React,{useEffect} from 'react'
+// import {Switch, Route} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import "./App.css";
-import Home from './Pages/Home'
-import Country from './Pages/Country'
-import {addToCart, removeFromCart} from './Redux/action'
+// import Home from './Pages/Home'
+// import Country from './Pages/Country'
+import {addToCart, removeFromCart,  getCountries, getOneCountry} from './Redux/action'
 
 function App() {
  const dispatch = useDispatch()
@@ -16,12 +16,17 @@ function App() {
  const removeCart = () => {
    dispatch(removeFromCart('Netherlands'))
  }
+
+ useEffect(data => {
+   dispatch( getCountries())
+   dispatch(getOneCountry('Netherlands'))
+ })
   return (
     <div className='App'>
-      <Switch>
+      {/* <Switch>
         <Route exact path='/'>{<Home/>}</Route>
         <Route exact path='/countries/:countryName' children={<Country/>}></Route>
-      </Switch>
+      </Switch> */}
       <button onClick={insertToCart}>Add Country</button>
       <button onClick={removeCart}>Remove Country</button>
     </div>

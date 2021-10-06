@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 function CountriesTable() {
   const classes = useStyles();
-  const {countries, error} = useCountries("https://restcountries.com/v3.1/all");
+  const {countries, error} = useCountries("https://restcountries.com/v2/all");
 
   if (error) {
     return <p>Sorry, there is an error while fetching data to the table</p>;

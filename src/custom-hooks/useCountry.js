@@ -1,26 +1,22 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import {getOneCountry} from '../Redux/action'
 
-
-const useCountry = (countryName) => {
-    const [countryData, setCountryData] = useState([])
-    const [error, setError] = useState([])
-    const url = `https://restcountries.com/v3.1/name/${countryName}`
-    useEffect(() => {
-      const getCountry = async () => {
-        try{
-          const response = await fetch(url)
-          const data = await response.json()
-          setCountryData(data)
-        }catch(error){
-          setError(error)
-        }
-        
-      }
-      getCountry()
-    }, [url])
-    return (
-        {error, countryData}
-    )
+const useCountry = url => {
+ const dispatch = useDispatch();
+ const country = useSelector(state =>{
+  return state.country
+ })
+ const fetchError = useSelector(state =>{
+  return state.error
+ })
+  useEffect(() => {
+   dispatch(getOneCountry)
+  }, [dispatch]);
+  
+  return (
+    [fetchError, country]
+  )
 }
 
 export default useCountry

@@ -1,24 +1,21 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import {getCountries} from '../Redux/action'
 
-const useCountries = (url) => {
-  const [countries, setCountries] = useState([]);
-  const [error, setError] = useState();
+const useCountries = url => {
+ const dispatch = useDispatch();
+ const countries = useSelector(state =>{
+  return state.countries
+ })
+ const fetchError = useSelector(state =>{
+  return state.error
+ })
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await fetch(url);
-        const data = await result.json();
-        setCountries(data);
-      } catch (error) {
-        setError(error);
-      }
-    };
-
-    fetchData();
-  }, [url]);
+   dispatch(getCountries)
+  }, [dispatch]);
   
   return (
-    {error, countries}
+    [fetchError, countries]
   )
 }
 

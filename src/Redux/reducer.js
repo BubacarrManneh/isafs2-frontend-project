@@ -1,5 +1,8 @@
 const defaultState = {
     cart: [],
+    countries: [],
+    country: {},
+    error: null,
 }
 
 const reducer = (state = defaultState, action) => {
@@ -23,20 +26,30 @@ const reducer = (state = defaultState, action) => {
                 cart: [...state.cart, incomingCountry]
             }
         case 'REMOVE_COUNTRY':
-            const removeCountry = action.payload
-            const removeName = removeCountry.name
-            const removedCountry = state.cart.filter((country) => {
-                return removeName !== country.name
-            })
-            if(removedCountry){
-                return state
-            }
             return{
                 ...state,
-                cart: [...state.cart, []]
+                cart: [{countryName: 'Netherlands'}]
             }
-            default:
-                return state
+        case 'FETCH_COUNTRIES_SUCCESS':
+            const countriesPayload = action.payload
+            return {
+                ...state,
+                  countries: countriesPayload,
+            }
+        case 'FETCH_ONE_COUNTRY_SUCCESS':
+            const countryData = action.payload[0]
+            return {
+                ...state,
+                  country: countryData,
+            }
+        case 'FETCH_ERROR':
+            const errorFromPayload = action.payload
+            return {
+                ...state,
+                  country: errorFromPayload,
+            }
+        default:
+          return state
     }
 }
 
