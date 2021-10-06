@@ -1,22 +1,22 @@
 import {useEffect} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import {getCountries} from '../Redux/action'
+import {getOneCountry} from '../Redux/action'
 
-const useCountries = url => {
+const useCountry = url => {
  const dispatch = useDispatch();
- const countries = useSelector(state =>{
-  return state.countries
+ const country = useSelector(state =>{
+  return state.country
  })
  const fetchError = useSelector(state =>{
   return state.error
  })
   useEffect(() => {
-   dispatch(getCountries)
+   dispatch(getOneCountry)
   }, [dispatch]);
   
   return (
-    [fetchError, countries]
+    [fetchError, country]
   )
 }
 
-export default useCountries
+export default useCountry
